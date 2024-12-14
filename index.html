@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Line Drawing with Axes</title>
+    <style>
+        body {
+            background-color: #000000;
+        }
+
+        canvas {
+            background-color: wheat;
+            border: 1px solid transparent;
+            padding: 2vw;
+            margin: 1vw 20vw;
+            border-radius: 2vw;
+            box-shadow: 0px 0px 2vw 0vw;
+            height: 40vw;
+            width: 40vw;
+        }
+
+        div {
+            background-color: whitesmoke;
+            border: 1px solid transparent;
+            padding: 2vw;
+            margin: 1vw 20vw;
+            border-radius: 2vw;
+            box-shadow: 0px 0px 2vw 0vw;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <div style="width: 30vw;">
+        <h1>Draw Line</h1>
+        <button onclick="DDA()">with DDA</button>
+        <button onclick="BSA()">With BSA</button>
+    </div>
+
+    <script>
+        // Initialize canvas and context
+        const canvas = document.getElementById('myCanvas');
+        const context = canvas.getContext('2d');
+        drawAxes();
+
+        function DDA() {
+            // const x1 = 100;
+            const x1 = parseFloat(prompt("Enter x1"))
+            // const y1 = 700;
+            const y1 = parseFloat(prompt("Enter y1"))
+            // const x2 = 600;
+            const x2 = parseFloat(prompt("Enter x2"))
+
+            // const y2 = 300;
+            const y2 = parseFloat(prompt("Enter y2"))
+
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+
+            const k = Math.abs(dx);//length to loop and loop 
+
+            if (Math.abs(dx) < Math.abs(dy)) {
+                k = dy;
+            }
+
+            // How much changE in each step
+            const xInc = dx / k;
+            const yInc = dy / k;
+
+            // drawing start 
+            let x = x1;
+            let y = y1;
+
+            // Loop to write new points each time 
+            for (let i = 0; i <= k; i++) {
+                drawPixelAt(x, y)
+                x += xInc;
+                y += yInc;
+            }
+        }
+
+
+        function BSA() {
+            const x1 = parseInt(prompt("Enter x1"));
+            const y1 = parseInt(prompt("Enter y1"));
+            const x2 = parseInt(prompt("Enter x2"));
+            const y2 = parseInt(prompt("Enter y2"));
+
+            const dx = Math.abs(x2 - x1);
+            const dy = Math.abs(y2 - y1);
+            const dxTemp = x2 - x1;
+            const dyTemp = y2 - y1;
+
+            const m = (dy / dx);
+            let forX = 1;
+            let forY = 1;
+            if (dxTemp < 0) {
+                forX = -1;
+            }
+            if (dyTemp < 0) {
+                forY = -1;
+
+            }
+
+            let x = x1, y = y1;
+            let p = 0;
+            if (m < 1) {
+                const pNotX = p + 2 * dy - dx;
+                let pTemp = pNotX;
+                while (106) {
+                    drawPixelAt(x, y);
+                    if (x === x2 && y === y2) {
+                        break;
+                    }
+                    if (pTemp >= 0) {
+                        x += forX;
+                        y += forY;
+                        pTemp += (2 * dy) - (2 * dx);
+                    } else if (pTemp < 0) {
+                        x += forX;
+                        pTemp += (2 * dy);
+                    }
+                }
+            } else if (m > 1) {
+                const pNotY = p + 2 * dx - dy;
+                pTemp = pNotY;
+                while (106) {
+                    drawPixelAt(x, y);
+                    if (x === x2 && y === y2) {
+                        break;
+                    }
+                    if (pTemp >= 0) {
+                        x += forX;
+                        y += forY;
+                        pTemp += (2 * dx) - (2 * dy);
+                    } else if (pTemp < 0) {
+                        y += forY;
+                        pTemp += (2 * dx);
+                    }
+                }
+            }
+        }
+
+
+        function drawAxes() {
+            // Draw X axis (horizontal)
+            context.beginPath();
+            context.moveTo(0, canvas.height / 2);  // Start at the center of Y-axis
+            context.lineTo(canvas.width, canvas.height / 2);  // Draw to the end of X-axis
+            context.stroke();
+
+            // Draw Y axis (vertical)
+            context.beginPath();
+            context.moveTo(canvas.width / 2, 0);  // Start at the center of X-axis
+            context.lineTo(canvas.width / 2, canvas.height);  // Draw to the end of Y-axis
+            context.stroke();
+
+            // Add labels for axes
+            context.fillText('X', canvas.width - 20, canvas.height / 2 - 10);  // Label for X-axis
+            context.fillText('Y', canvas.width / 2 + 10, 20);  // Label for Y-axis
+        }
+
+        function drawPixelAt(x, y) {
+            context.fillRect(Math.round(x), Math.round(y), 2, 2);  // context.fillRect(x, y, width, height)
+        }
+
+
+    </script>
+
+</body>
+
+</html>
