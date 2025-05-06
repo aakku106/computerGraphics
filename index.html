@@ -59,12 +59,14 @@
         <h1>Draw Line</h1>
         <button onclick="DDA()">with DDA</button>
         <button onclick="BSA()">With BSA</button>
+        <button onclick="Circle()">Circle</button>
     </div>
 
     <script>
         // Initialize canvas and context
         const canvas = document.getElementById('myCanvas');
         const context = canvas.getContext('2d');
+
         drawAxes();
 
         function DDA() {
@@ -165,6 +167,27 @@
             }
         }
 
+        function Circle() {
+            const radius = parseInt(prompt("Enter Radius of Circle"))
+            const Xc = parseInt(prompt("Enter Xc"))
+            const Yc = parseInt(prompt("Enter Yc"))
+            for (let i = 0; i <= 360;) {
+                let radians = i * (Math.PI / 180);
+                let x = Xc + radius * (Math.cos(i));
+                let y = Yc + radius * (Math.sin(i));
+                drawPixelAt(x, y);
+                i += .0001;
+            }
+        }
+
+        function MidPointCircleAlgo(){
+            const radius = parseInt(prompt("Enter Radius of Circle"))
+            const Xc = parseInt(prompt("Enter Xc"))
+            const Yc = parseInt(prompt("Enter Yc"))
+            let p=radius
+            let x=0
+        }
+
 
         function drawAxes() {
             context.strokeStyle = "#000";
@@ -186,7 +209,6 @@
             const canvasY = canvas.height / 2 - y;
             context.fillRect(Math.round(canvasX), Math.round(canvasY), 2, 2) // context.fillRect(x, y, width, height)
         }
-
 
     </script>
 
