@@ -6,3 +6,27 @@
   2. BSA
   3. Mid-Point Circle drawing algo
   4. parametric equation-based circle drawing
+
+### You can get as cerative as you like in here
+
+![alt text](<WhatsApp Image 2025-05-15 at 14.04.20.jpeg>)
+
+![alt text](<Screenshot 2025-05-15 at 13.33.46.png>)
+
+![alt text](<Screenshot 2025-05-15 at 13.33.55.png>)
+
+![alt text](<Screenshot 2025-05-15 at 13.52.23.png>)
+
+![alt text](<WhatsApp Image 2025-05-15 at 14.04.11.jpeg>)
+
+![alt text](<WhatsApp Image 2025-05-15 at 14.04.16 (1).jpeg>)
+
+![alt text](<WhatsApp Image 2025-05-15 at 14.04.16.jpeg>)
+
+![alt text](<WhatsApp Image 2025-05-15 at 14.04.19.jpeg>)
+
+![alt text](<WhatsApp Image 2025-05-15 at 14.04.17 (2).jpeg>)
+
+![alt text](<WhatsApp Image 2025-05-15 at 14.04.17.jpeg>)
+
+![alt text](<WhatsApp Image 2025-05-15 at 14.04.19 (1).jpeg>)
