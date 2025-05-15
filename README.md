@@ -30,3 +30,5 @@
 ![alt text](<pics/WhatsApp Image 2025-05-15 at 14.04.17.jpeg>)
 
 ![alt text](<pics/WhatsApp Image 2025-05-15 at 14.04.19 (1).jpeg>)
+
+### You can even add your own colors on it
